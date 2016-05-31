@@ -1,0 +1,46 @@
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+	xmlns:beans="http://www.springframework.org/schema/beans" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+http://www.springframework.org/schema/security
+http://www.springframework.org/schema/security/spring-security-3.0.xsd">
+
+	<http access-denied-page="/error403.jsp">
+		<intercept-url pattern="/index*" access="ROLE_USER,ROLE_ADMINISTRATOR" />
+		<intercept-url pattern="/add*" access="ROLE_ADMINISTRATOR" />
+		<intercept-url pattern="/delete/*" access="ROLE_ADMINISTRATOR" />
+		<intercept-url pattern="/find*" access="ROLE_USER,ROLE_ADMINISTRATOR" />
+		<intercept-url pattern="/edit/*" access="ROLE_ADMINISTRATOR" />
+		<intercept-url pattern="/division/*" access="ROLE_ADMINISTRATOR" />
+		<intercept-url pattern="/addnewemployee/*" access="ROLE_ADMINISTRATOR" />
+	
+	<form-login login-page="/login.jsp" default-target-url="/login.jsp"
+			authentication-failure-url="/login.jsp?error=true" />
+		<logout logout-url="/logout" logout-success-url="/index"></logout>
+		
+		<remember-me />
+	</http>
+
+	<authentication-manager>
+		<authentication-provider>
+  <user-service>
+				<user name="Редактор" password="pass" authorities="ROLE_USER,ROLE_ADMINISTRATOR" /><!-- ,ROLE_USER,ROLE_ANONYMOUS -->
+				<user name="Читатель" password="1111" authorities="ROLE_USER" />
+				<user name="Кадровик" password="1112" authorities="ROLE_USER,ROLE_ADMINISTRATOR" />
+				
+				<user name="Гендиректор" password="1110" authorities="ROLE_USER,ROLE_ADMINISTRATOR" />
+				<user name="Юрист" password="1113" authorities="ROLE_USER" />
+				<user name="Финансист" password="1111" authorities="ROLE_USER" />
+				
+				<user name="Менеджер" password="1116" authorities="ROLE_USER" />
+				<user name="Бухгалтер" password="1117" authorities="ROLE_USER" />
+				<user name="Маркетолог" password="1121" authorities="ROLE_USER" />
+				
+				<user name="Офис-менеджер" password="1122" authorities="ROLE_USER" />
+				
+			     		  </user-service>
+</authentication-provider>
+	</authentication-manager>
+
+</beans:beans>
