@@ -20,3 +20,9 @@
 	Остальные учетные данные находятся в src/main/webapp/WEB-INF/spring/security.xml
 	Для проекта использовалась база даннных MySQL 5.1.49
 	
+4.
+- @Repository @Autowired в DAO
+- @Service(@Component) @Transactional
+- web.xml 	Это дескриптор развертывания. Файл, который описывает настройки развертывания приложения на сервере.
+- бины: messageSource dataSource transactionManager
+- "<"password-encoder hash="md5" "/>" - unused.
